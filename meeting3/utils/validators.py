@@ -18,4 +18,4 @@ def validate_side_format(side: str) -> float:
             raise NonPositiveInputException(f"Input {num} is not positive number")
         return num
     except ValueError:
-        raise NonNumericInputException(f"Input {num} is not a number")
+        raise NonNumericInputException(f"Input {side} is not a number")
