@@ -1,10 +1,21 @@
-print(f"Loading {__file__}")
-
-def is_number(input_as_str: str) -> bool:
-    return input_as_str.isdigit()
+from meeting3.geometry.exceptions import NonNumericInputException, NonPositiveInputException
 
 
-def print_hello(name):
-    print(f"Hello {name}")
+def validate_side_format(side: str) -> float:
+    """
+    Checks whether the geometric figure side received as input is valid.
+    Valid side should be a float positive number.
 
+    If the side is valid, convert it to float and return.
+    Otherwise, raise relevant exception:
+    NonNumericInputException or NonPositiveInputException
 
+    :param side: geometric side received as input
+    """
+    try:
+        num = float(side)
+        if num <= 0:
+            raise NonPositiveInputException(f"Input {num} is not positive number")
+        return num
+    except ValueError:
+        raise NonNumericInputException(f"Input {num} is not a number")
