@@ -21,6 +21,7 @@ all_threads = []
 for root, dirs, files in os.walk(folder_path):
     for filename in files:
         if os.path.splitext(filename)[1] == '.csv':
+            # read_single_file(...)
             th = threading.Thread(target=read_single_file, args=(os.path.join(root, filename),))
             th.start()
             all_threads.append(th)

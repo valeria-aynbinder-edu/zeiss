@@ -22,3 +22,13 @@ for root, dirs, files in os.walk(folder_path):
 
 end_time = datetime.datetime.utcnow()
 print(f"total time: {(end_time - start_time).total_seconds()}")
+
+
+"""
+Implement a code that performs the following:
+Reads a csv file AAPL.csv and creates separate csv file with stock prices
+for every year.
+The name of the file should be AAPL_<year>.csv
+All the files should be created in parallel
+
+"""

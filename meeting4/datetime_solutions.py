@@ -12,7 +12,7 @@ def weekday_in_3_days(date_as_str):
         print('Invalid format')
 
 
-def isHoliday(date,*holidays):
+def isHoliday(date, *holidays):
     print(f"User Input is: {date}")
     try:
         print(f"Accepted format: {datetime.datetime.strptime(date, '%d-%m-%Y')}")
@@ -32,9 +32,9 @@ def isHoliday(date,*holidays):
 
 
 # Exercise 1
-print(weekday_in_3_days("2021-12-08, Wed, 10:00"))
-print(weekday_in_3_days("2021-12-01, Wed, 08:15"))
-print(weekday_in_3_days("2021-12-02, Tue, 07:24"))
+# print(weekday_in_3_days("2021-12-08, Wed, 10:00"))
+# print(weekday_in_3_days("2021-12-01, Wed, 08:15"))
+# print(weekday_in_3_days("2021-12-02, Tue, 07:24"))
 
 
 #   Exercise 2
@@ -43,3 +43,5 @@ print("Exercise 2")
 print("Format expected: dd-mm-yyyy") #  %d-%m-%Y
 userinput = input("Please enter a date:" )
 isHoliday(userinput, 'Fri', 'Sat')
+
+
