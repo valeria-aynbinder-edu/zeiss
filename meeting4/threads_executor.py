@@ -1,8 +1,8 @@
 from concurrent.futures import ThreadPoolExecutor
 import os
 
-# folder_path = "/Users/valeria/Downloads/test_data"
-folder_path = "/Users/valeria/Documents/John Bryce"
+folder_path = "/Users/valeria/Downloads/test_data"
+# folder_path = "/Users/valeria/Documents/John Bryce"
 total_lines = 0
 
 
@@ -24,6 +24,7 @@ with ThreadPoolExecutor(max_workers=4) as executor:
                 future = executor.submit(read_single_file, os.path.join(root, filename))
                 futures.append(future)
 
+print("after executor")
 
 for future in futures:
     return_value = future.result()
