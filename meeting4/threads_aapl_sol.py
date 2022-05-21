@@ -14,12 +14,15 @@ def process_file(year):
         #skip header
         header = f.readline()
         lines_to_write.append(header)
+
         for line in f:
             cells = line.split(",")
             try:
                 date = datetime.datetime.strptime(cells[0], "%d-%m-%Y")
             except:
                 print("problem formatting")
+                continue
+
             if date.year == year:
                 reached_year = True
                 lines_to_write.append(line)
@@ -40,5 +43,6 @@ if __name__ == '__main__':
     with ThreadPoolExecutor(max_workers=10) as executor:
         for year in range(2000, 2021):
             executor.submit(process_file, year)
+
     end = datetime.datetime.now()
     print(f"Done in {(end-start).total_seconds()}")
