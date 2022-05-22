@@ -9,24 +9,30 @@ class Example(wx.Frame):
         self.InitUI()
         self.Centre()
 
+    def onSevenBtnClick(self, event):
+        self.display.write("7")
+
+
     def InitUI(self):
 
-        # menubar = wx.MenuBar()
-        # fileMenu = wx.Menu()
-        # menubar.Append(fileMenu, '&File')
-        # self.SetMenuBar(menubar)
+        menubar = wx.MenuBar()
+        fileMenu = wx.Menu()
+        menubar.Append(fileMenu, '&File')
+        self.SetMenuBar(menubar)
 
         vbox = wx.BoxSizer(wx.VERTICAL)
         self.display = wx.TextCtrl(self, style=wx.TE_RIGHT)
         vbox.Add(self.display, flag=wx.EXPAND|wx.TOP|wx.BOTTOM, border=4)
-
         gs = wx.GridSizer(5, 4, 5, 5)
 
-        gs.AddMany([(wx.Button(self, label='Cls'), 0, wx.EXPAND),
+        seven_btn = wx.Button(self, label='7')
+        cls_btn = wx.Button(self, label='Cls')
+
+        gs.AddMany( [(cls_btn, 0, wx.EXPAND),
                      (wx.Button(self, label='Bck'), 0, wx.EXPAND),
                      (wx.StaticText(self), wx.EXPAND),
                      (wx.Button(self, label='Close'), 0, wx.EXPAND),
-                     (wx.Button(self, label='7'), 0, wx.EXPAND),
+                     (seven_btn, 0, wx.EXPAND),
                      (wx.Button(self, label='8'), 0, wx.EXPAND),
                      (wx.Button(self, label='9'), 0, wx.EXPAND),
                      (wx.Button(self, label='/'), 0, wx.EXPAND),
@@ -45,6 +51,9 @@ class Example(wx.Frame):
 
         vbox.Add(gs, proportion=1, flag=wx.EXPAND)
         self.SetSizer(vbox)
+
+        self.Bind(wx.EVT_BUTTON, self.onSevenBtnClick, seven_btn)
+        self.Bind(wx.EVT_BUTTON, lambda event: self.display.Clear(), cls_btn)
 
 
 def main():
